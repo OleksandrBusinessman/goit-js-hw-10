@@ -7,9 +7,7 @@ const DEBOUNCE_DELAY = 300;
 const inputEl = document.querySelector('#search-box');
 const listEl = document.querySelector('.country-list');
 const divEl = document.querySelector('.country-info');
-const searchParams = 'fields=name,capital,population,flags,languages';
 let countryName;
-let languageCharacters;
 
 inputEl.addEventListener('input', debounce(onInput, DEBOUNCE_DELAY));
 
@@ -19,7 +17,7 @@ function onInput(e) {
     cleanDOM();
     return;
   }
-  fetchCountries(countryName, searchParams)
+  fetchCountries(countryName)
     .then(data => filtersInterface(data))
     .catch(() => throwError());
 }
