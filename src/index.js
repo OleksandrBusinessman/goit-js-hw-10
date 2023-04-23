@@ -15,7 +15,6 @@ inputEl.addEventListener('input', debounce(onInput, DEBOUNCE_DELAY));
 
 function onInput(e) {
   countryName = e.target.value.toLowerCase().trim();
-  languageCharacters = countryName.slice(0, 3).toLowerCase();
   if (!countryName) {
     cleanDOM();
     return;
@@ -61,7 +60,9 @@ function createMarkupOne(arr) {
         languages,
       }) => `<h3><span class="property-decoration">Capital: </span><span class="value-decoration">${capital}</span></h3>
 <p><span class="property-decoration">Population: </span><span class="value-decoration">${population}</span></p>
-<p><span class="property-decoration">Languages: </span><span class="value-decoration">${languages[languageCharacters]}</span></p>`
+<p><span class="property-decoration">Languages: </span><span class="value-decoration">${Object.values(
+        languages
+      ).join(', ')}</span></p>`
     )
     .join('');
 }
